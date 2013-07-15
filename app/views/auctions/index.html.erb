@@ -1,0 +1,47 @@
+
+
+<section class="hero-unit"> 
+
+<h2>Auctions</h2>
+
+<p>These are the auction files published by Indianapolis / Marion County. We get them from <%=link_to('http://www.indy.gov/eGov/County/Comm/surplus/Pages/home.aspx', 'http://www.indy.gov/eGov/County/Comm/surplus/Pages/home.aspx') %> </p>
+<p>We upload the PDF documents gotten from that website onto ours and also a HTML translation of the PDF document. We use our algorithm to parse that data into our database and then check it manually as PDF data parsing is mildly error prone. So far, the city has not yielded to our requests to make the data available in format more friendly to data processing, so please regard all data with a mild amount of suspicion until you can reference it back to the origional PDF document. </p>
+<p>Thanks, and enjoy!</p>
+<p></p>
+
+
+</section>
+
+<section>
+<table class="table table-striped">
+  <tr>
+    <th>Pdf file</th>
+    <th>Html file</th>
+    <th>File date</th>
+    <th>Auction date</th>
+    <th></th>
+ 
+  </tr>
+
+<% @auctions.each do |auction| %>
+  <tr>
+    <td><%= link_to auction.auction_pdf_uploader_url, auction.auction_pdf_uploader_url %></td>
+    <td><%= link_to "test", '#' %></td>
+    <td><%= auction.file_date %></td>
+    <td><%= auction.auction_date %></td>
+
+    <td><%= link_to 'Show', auction, :class => 'btn btn-inverse' %>
+    <%= link_to 'Edit', edit_auction_path(auction), :class => 'btn btn-inverse'%>
+    <%= link_to 'Destroy', auction, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+</section>
+
+<section>
+<%= link_to 'New Auction', new_auction_path, :class => 'btn pull-right btn-primary' %>
+<%= link_to 'Destroy All', destroy_all_auctions_path, method: :destroy_all, data: {confirm: 'Delete ALL auctions?'}, :class => 'btn btn-danger pull-right'%>
+</section>

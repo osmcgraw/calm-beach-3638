@@ -1,0 +1,36 @@
+<h1>Listing parcels</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>Number</th>
+    <th>Address</th>
+    <th>City</th>
+    <th>Country</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th>Minimum bid</th>
+    <th>State</th>
+    <th>Zip</th>
+  </tr>
+
+<% @parcels.each do |parcel| %>
+  <tr>
+    <td><%= parcel.number %></td>
+    <td><%= parcel.address %></td>
+    <td><%= parcel.city %></td>
+    <td><%= parcel.country %></td>
+    <td><%= parcel.latitude %></td>
+    <td><%= parcel.longitude %></td>
+    <td><%= parcel.minimum_bid %></td>
+    <td><%= parcel.state %></td>
+    <td><%= parcel.zip %></td>
+    <td><%= link_to 'Show', parcel, :class => "btn" %>
+    <%= link_to 'Edit', edit_parcel_path(parcel), :class => "btn" %>
+    <%= link_to 'Destroy', parcel, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Parcel', new_parcel_path %>

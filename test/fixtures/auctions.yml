@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  pdf_file: MyString
+  html_file: MyString
+  file_date: 2013-02-02
+  auction_date: 2013-02-02
+  file_parcel_join: 
+
+two:
+  pdf_file: MyString
+  html_file: MyString
+  file_date: 2013-02-02
+  auction_date: 2013-02-02
+  file_parcel_join: 

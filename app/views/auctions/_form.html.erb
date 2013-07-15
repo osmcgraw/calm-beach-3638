@@ -1,0 +1,35 @@
+<%= form_for @auction, :html => {:multipart => true} do |f| %>
+  <% if @auction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@auction.errors.count, "error") %> prohibited this auction from being saved:</h2>
+
+      <ul>
+      <% @auction.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :file_date %><br />
+    <%= f.date_select :file_date %>
+  </div>
+  <div class="field">
+    <%= f.label :auction_date %><br />
+    <%= f.date_select :auction_date %>
+  </div>
+  <div class="field">
+  	<%= f.label "Origional PDF File"%>
+  	<%= f.file_field :auction_pdf_uploader%>
+  </div>
+  <div class="field">
+  	<%= f.label "HTML File Created by PDF2HTML"%>
+  	<%= f.file_field :auction_html_uploader%>
+  </div>
+  
+  <div class="actions">
+  	<br/>
+    <%= f.submit :class => "btn btn-primary"%>
+  </div>
+<% end %>

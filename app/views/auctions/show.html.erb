@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Pdf file:</b>
+  <%= @auction.auction_pdf_uploader %>
+</p>
+
+<p>
+  <b>Html file:</b>
+  <%= @auction.auction_html_uploader %>
+</p>
+
+<p>
+  <b>File date:</b>
+  <%= @auction.file_date %>
+</p>
+
+<p>
+  <b>Auction date:</b>
+  <%= @auction.auction_date %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_auction_path(@auction) %> |
+<%= link_to 'Back', auctions_path %>

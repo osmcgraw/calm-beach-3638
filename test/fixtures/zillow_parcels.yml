@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  zpid: 1
+  homedetails: MyString
+  graphsanddata: MyString
+  comparables: MyString
+  zestimate: 
+  value_range_high: 
+  value_range_low: 
+  parcel: 
+
+two:
+  zpid: 1
+  homedetails: MyString
+  graphsanddata: MyString
+  comparables: MyString
+  zestimate: 
+  value_range_high: 
+  value_range_low: 
+  parcel: 

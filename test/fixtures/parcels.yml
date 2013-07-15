@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  number: 1
+  address: MyString
+  city: MyString
+  country: MyString
+  latitude: 1.5
+  longitude: 1.5
+  minimum_bid: 9.99
+  state: MyString
+  zillow_parcel: 
+  zip: 1
+
+two:
+  number: 1
+  address: MyString
+  city: MyString
+  country: MyString
+  latitude: 1.5
+  longitude: 1.5
+  minimum_bid: 9.99
+  state: MyString
+  zillow_parcel: 
+  zip: 1

@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Number:</b>
+  <%= @parcel.number %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @parcel.address %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @parcel.city %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%= @parcel.country %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @parcel.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @parcel.longitude %>
+</p>
+
+<p>
+  <b>Minimum bid:</b>
+  <%= @parcel.minimum_bid %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @parcel.state %>
+</p>
+
+<p>
+  <b>Zillow parcel:</b>
+  <%= @parcel.zillow_parcel %>
+</p>
+
+<p>
+  <b>Zip:</b>
+  <%= @parcel.zip %>
+</p>
+
+
+<%= link_to 'Edit', edit_parcel_path(@parcel) %> |
+<%= link_to 'Back', parcels_path %>

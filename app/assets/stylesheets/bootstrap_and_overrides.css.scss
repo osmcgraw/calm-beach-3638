@@ -1,0 +1,41 @@
+@import "bootstrap";
+@import "bootstrap-responsive";
+
+body {
+  background-color: #01A9DB;
+}
+
+html, body{
+  height: 100%
+}
+
+#main
+{
+  overflow:auto;
+  padding-bottom: 50px; /* this needs to be bigger than footer height*/
+}
+
+#wrap
+{
+  min-height: 100%;
+}
+
+.footer
+{
+  position: relative;
+  margin-top: -50px; /* negative value of footer height */
+  height: 50px;
+  clear:both;
+  padding-top:20px;
+  color:#fff;
+}
+
+.color-of-head {
+  background-color: #222222;
+  color: #CCC;
+}
+
+.site-container {
+  background-color: #CCCCCC;
+}
+
