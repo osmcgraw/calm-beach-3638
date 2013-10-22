@@ -4,7 +4,7 @@ gem 'rails', '3.2.9'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-gem 'sqlite3'
+
 gem 'pg'
 gem 'geocoder'
 gem 'gmaps4rails'
@@ -12,7 +12,7 @@ gem 'carrierwave'
 gem 'bootstrap-sass', '~> 2.2.2.0'
 gem 'devise'
 gem 'sass-rails',   '~> 3.2.3'
-
+gem 'rails_12factor', group: :production
 
 
 # Gems used only for assets and not required
@@ -45,3 +45,5 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+ruby '2.0.0'
