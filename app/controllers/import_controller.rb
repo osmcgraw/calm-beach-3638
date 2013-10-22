@@ -27,7 +27,7 @@ class ImportController < ApplicationController
        parcel.auction = auction   
        #                     changes here include the line above, line 13, and like 9--adding :auction to the params
        parcel.save
-       sleep(1)
+       sleep(2)
      end
 
   end
