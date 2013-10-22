@@ -26,42 +26,53 @@ class HtmlOperations
     #START LOOPING THROUGH FILE
     file_inputs.each_with_index do |line, index|
       
+      
+      # DIFFERENT FILES HAVE DIFFERNT VERSIONS OF THE <BR> TAG. SOME FILES HAVE A <BR/> AND THEN NEED TO BE ESCAPED IN THE REGEX. 
+      # THAT TAG WOULD BE <BR\/>
+      
+      
       # Testing to find the item number (1, 2 or 3 digits followed by a line break)
-      test1 = /^\d{1,3}<br\/>/
+      test1 = /^\d{1,3}<br>/
       
       # Testing to find parcel number (7 digits followed by a line break)
-      test2 = /^\d{7}<br\/>/       
+      test2 = /^\d{7}<br>/       
       
       # Testing to find a minimum bid
       
       # Tis test is lookiing for 1,000.00 or 12,000.00 (or similar)
-      test3 = /\$\d{1,2},\d{3}.00/
+      test3 = /\d{1,2},\d{3}.00/
       
       #THis test is looking for 100.00 or similar
-      test4 = /\$\d{3}.00/
+      test4 = /\d{3}.00/
       
       
       #This tests for the line to be the property identifier. Property identifiers in this document are sequential. 
   
-      if (test1.match line) && (line[/^\d{1,3}/] == row_number.to_s)
+      if (test2.match line) 
+        
+      
         parsed_data.push row_content+row_garbage    #COME BACK AND FIX THIS, THIS PREVENTS THE LAST LINE 227 FROM BEING PARSED ...
         row_content = []
         row_garbage = []
    
        #Adding the data just found to the array 
-        row_content.push line[/^\d{1,3}/]
-          
+       row_content.push line[/^\d{7}/] 
+
+        
         #This is iterating through the rows of data
         row_number += 1
         #These are our test cases
-      elsif test2.match line
-        row_content.push line[/^\d{7}/] 
+      elsif (test1.match line) && (line[/^\d{1,3}/] == (row_number-1).to_s)
+        row_content.push line[/^\d{1,3}/]
+
       elsif (test3.match line)
-        row_content.push line[/\$\d{1,2},\d{3}.00/]     
+        row_content.push line[/\d{1,2},\d{3}.00/]    
+
       elsif (test4.match line)
-        row_content.push line[/\$\d{3}.00/]
+        row_content.push line[/\d{3}.00/]
+     
       else
-        row_garbage.push line.gsub('&#160;', ' ').gsub('<br/>', '')
+        row_garbage.push line.gsub('&#160;', ' ').gsub('<br>', '')
       end    
     end 
     

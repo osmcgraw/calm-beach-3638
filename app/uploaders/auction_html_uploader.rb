@@ -3,7 +3,10 @@ require_relative 'html_operations'
 
 
 class AuctionHtmlUploader < CarrierWave::Uploader::Base
+    
 
+    
+  
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
@@ -20,6 +23,7 @@ class AuctionHtmlUploader < CarrierWave::Uploader::Base
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -36,26 +40,34 @@ class AuctionHtmlUploader < CarrierWave::Uploader::Base
   # def scale(width, height)
   #   # do something
   # end
-
+  # 
   process :parse_html_to_database
   
   def parse_html_to_database
-
+  
      html_file = HtmlOperations.new(self.current_path) 
         
        #make Property Objects
        # properties = []
     
     html_file.file_as_array.each do |prop|
-       parcel = Parcel.new(:number => prop[1], 
+
+        
+       parcel = Parcel.new(:number => prop[0], 
                            :minimum_bid => prop[2].gsub(/[\,$]/, "").to_f, 
                            :address => prop[3], 
                            :city => "Indianapolis", 
-                           :state => "Indiana")
+                           :state => "Indiana", 
+                           :auction_id => "#{model.id}"
+                           )
        parcel.save
+       
+       
      end
-
+  
   end
+
+  
 
 
   # Create different versions of your uploaded files:

@@ -1,8 +1,8 @@
 class Parcel < ActiveRecord::Base
   
-  has_many :auction_parcels
+  belongs_to :auction
   has_one :zillow_parcel
-  attr_accessible :address, :city, :country, :latitude, :longitude, :minimum_bid, :number, :state, :zip
+  attr_accessible :address, :city, :country, :latitude, :longitude, :minimum_bid, :number, :state, :zip, :auction_id
   
   def full_address
     "#{address}, #{city}, #{state}"
@@ -12,9 +12,9 @@ class Parcel < ActiveRecord::Base
     "#{address}, #{city}, #{state}"
   end
   
-  geocoded_by :full_address
+ geocoded_by :full_address
  
-#  after_validation :geocode
-
-  acts_as_gmappable
+ after_validation :geocode
+ 
+ acts_as_gmappable
 end

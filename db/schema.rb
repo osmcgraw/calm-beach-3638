@@ -11,19 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130203022247) do
-
-  create_table "auction_parcels", :force => true do |t|
-    t.integer  "auction_id"
-    t.integer  "parcel_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "auction_parcels", ["auction_id"], :name => "index_auction_parcels_on_auction_id"
-  add_index "auction_parcels", ["parcel_id"], :name => "index_auction_parcels_on_parcel_id"
+ActiveRecord::Schema.define(:version => 20131019230939) do
 
   create_table "auctions", :force => true do |t|
+    t.string   "pdf_file"
+    t.string   "html_file"
     t.date     "file_date"
     t.date     "auction_date"
     t.integer  "file_parcel_join_id"
@@ -67,8 +59,10 @@ ActiveRecord::Schema.define(:version => 20130203022247) do
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
     t.boolean  "gmaps"
+    t.integer  "auction_id"
   end
 
+  add_index "parcels", ["auction_id"], :name => "index_parcels_on_auction_id"
   add_index "parcels", ["zillow_parcel_id"], :name => "index_parcels_on_zillow_parcel_id"
 
   create_table "users", :force => true do |t|

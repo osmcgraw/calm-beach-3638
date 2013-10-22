@@ -19,6 +19,8 @@
     <th>Html file</th>
     <th>File date</th>
     <th>Auction date</th>
+	<th>Parcels</th>
+	<th>Actions</th>
     <th></th>
  
   </tr>
@@ -29,7 +31,7 @@
     <td><%= link_to "test", '#' %></td>
     <td><%= auction.file_date %></td>
     <td><%= auction.auction_date %></td>
-
+	<td><%= link_to "View Parcels (#{auction.parcels.count.to_s})", auction_parcels_path(auction)%>
     <td><%= link_to 'Show', auction, :class => 'btn btn-inverse' %>
     <%= link_to 'Edit', edit_auction_path(auction), :class => 'btn btn-inverse'%>
     <%= link_to 'Destroy', auction, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %></td>

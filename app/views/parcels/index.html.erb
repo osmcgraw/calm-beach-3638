@@ -24,13 +24,15 @@
     <td><%= parcel.minimum_bid %></td>
     <td><%= parcel.state %></td>
     <td><%= parcel.zip %></td>
-    <td><%= link_to 'Show', parcel, :class => "btn" %>
-    <%= link_to 'Edit', edit_parcel_path(parcel), :class => "btn" %>
-    <%= link_to 'Destroy', parcel, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
+    <td><%= link_to 'Show', auction_parcel_path(@auction, parcel), :class => "btn" %>
+    <%= link_to 'Edit', edit_auction_parcel_path(@auction, parcel), :class => "btn" %>
+    <%= link_to 'Destroy', auction_parcel_path(@auction,parcel), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Parcel', new_parcel_path %>
+<%= link_to 'New Parcel', new_auction_parcel_path %>
+
+<%= gmaps4rails(@json)%>

@@ -1,8 +1,16 @@
 class ParcelsController < ApplicationController
   # GET /parcels
   # GET /parcels.json
+  before_filter :get_auction
+  
+  def get_auction
+    @auction = Auction.find(params[:auction_id])
+  end
+  
+  
   def index
-    @parcels = Parcel.all
+    @parcels = @auction.parcels
+    @json = @parcels.to_gmaps4rails
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,8 +21,10 @@ class ParcelsController < ApplicationController
   # GET /parcels/1
   # GET /parcels/1.json
   def show
-    @parcel = Parcel.find(params[:id])
-
+    
+    @parcel = @auction.parcels.find(params[:id])
+    
+    @json = @parcel.to_gmaps4rails
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @parcel }
@@ -24,7 +34,7 @@ class ParcelsController < ApplicationController
   # GET /parcels/new
   # GET /parcels/new.json
   def new
-    @parcel = Parcel.new
+    @parcel = @auction.parcels.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,13 +44,13 @@ class ParcelsController < ApplicationController
 
   # GET /parcels/1/edit
   def edit
-    @parcel = Parcel.find(params[:id])
+    @parcel = @auction.parcels.find(params[:id])
   end
 
   # POST /parcels
   # POST /parcels.json
   def create
-    @parcel = Parcel.new(params[:parcel])
+    @parcel = @auction.parcels.new(params[:parcel])
 
     respond_to do |format|
       if @parcel.save
@@ -56,11 +66,12 @@ class ParcelsController < ApplicationController
   # PUT /parcels/1
   # PUT /parcels/1.json
   def update
-    @parcel = Parcel.find(params[:id])
+
+    @parcel = @auction.parcels.find(params[:id])
 
     respond_to do |format|
       if @parcel.update_attributes(params[:parcel])
-        format.html { redirect_to @parcel, notice: 'Parcel was successfully updated.' }
+        format.html { redirect_to [@auction, @parcel], notice: 'Parcel was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -72,11 +83,11 @@ class ParcelsController < ApplicationController
   # DELETE /parcels/1
   # DELETE /parcels/1.json
   def destroy
-    @parcel = Parcel.find(params[:id])
+    @parcel = @auction.parcels.find(params[:id])
     @parcel.destroy
 
     respond_to do |format|
-      format.html { redirect_to parcels_url }
+      format.html { redirect_to auction_parcels_url }
       format.json { head :no_content }
     end
   end

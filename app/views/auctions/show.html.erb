@@ -20,7 +20,7 @@
   <%= @auction.auction_date %>
 </p>
 
-
+<%= link_to "View Parcels (#{@auction.parcels.count})", auction_parcels_path(@auction) %> |
 
 <%= link_to 'Edit', edit_auction_path(@auction) %> |
 <%= link_to 'Back', auctions_path %>

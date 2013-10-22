@@ -25,6 +25,7 @@ class AuctionsController < ApplicationController
   # GET /auctions/new.json
   def new
     @auction = Auction.new
+    @auction.save
 
     respond_to do |format|
       format.html # new.html.erb
